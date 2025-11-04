@@ -1,0 +1,11 @@
+input, select {
+  display: block;
+  margin-bottom: 8px;
+  padding: 6px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
