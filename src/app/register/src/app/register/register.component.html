@@ -1,0 +1,33 @@
+<h2>טופס הרשמה</h2>
+
+<form #form="ngForm" (ngSubmit)="submitForm()" novalidate>
+  <label>שם:</label>
+  <input type="text" name="name" [(ngModel)]="user.name" required />
+  <div *ngIf="form.submitted && !form.controls['name']?.valid" class="error">
+    יש להזין שם
+  </div>
+
+  <label>אימייל:</label>
+  <input type="email" name="email" [(ngModel)]="user.email" required email />
+  <div *ngIf="form.submitted && !form.controls['email']?.valid" class="error">
+    יש להזין אימייל תקין
+  </div>
+
+  <label>סיסמה:</label>
+  <input type="password" name="password" [(ngModel)]="user.password" required minlength="4" />
+  <div *ngIf="form.submitted && !form.controls['password']?.valid" class="error">
+    הסיסמה צריכה להכיל לפחות 4 תווים
+  </div>
+
+  <label>מגדר:</label>
+  <select name="gender" [(ngModel)]="user.gender" required>
+    <option value="" disabled selected>בחר/י מגדר</option>
+    <option value="male">זכר</option>
+    <option value="female">נקבה</option>
+  </select>
+  <div *ngIf="form.submitted && !form.controls['gender']?.valid" class="error">
+    יש לבחור מגדר
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">שלח</button>
+</form>
